@@ -1,20 +1,26 @@
+#follow on from test-driven-development
+def is_even(number):            
+    return number % 2 == 0      #returns true/false whether number even/not
+
 def even_number_of_evens(numbers):
-    if numbers == []:
-        return False
-    else:
-        evens = 0               #initialise a variable to say currently zero evens   
+    
+    evens = sum([1 for n in numbers if is_even(n)])
+    return False if evens == 0 else is_even(evens)
+    
+    """     this reduces to line 7/8 above
+    evens = 0               #initialise a variable to say currently zero evens   
         
         
                                     #loop to check each number and see if it's even
     for n in numbers:
-        if n % 2 == 0:              #remainder when divided by 2 is zero(modulo)..then is even number
+        if is_even(n):              #remainder when divided by 2 is zero(modulo)..then is even number
             evens += 1              #if even...increment by 1
             
     if evens == 0:                  # if number of evens = 0
         return False
     else:    
-        return evens % 2 == 0           #returns true if number of evens is even
-        
+        return is_even(evens)           #returns true if number of evens is even
+        """
         
         
 assert even_number_of_evens([]) == False, "No numbers"
